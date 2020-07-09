@@ -7,6 +7,15 @@
 </head>
 <body>
   <div class="container mt-5" style="height: 200px;">
+    <label for="limit">Limit</label>
+    <!-- <ngb-pagination [collectionSize]="100" [(page)]="limit" (pageChange)="getTableContents($event)" [directionLinks]="false">
+      <ng-template ngbPaginationNumber let-p>{{ getLimitSymbol(p) }}</ng-template>
+
+    </ngb-pagination> -->
+    <div class="d-flex">
+      <button (click)="valueChange(5)">5</button>
+      <button (click)="valueChange(10)"> 10</button>
+    </div>
     <table class="table table-striped">
       <thead class="thead-dark">
         <tr>
@@ -14,7 +23,7 @@
           <th scope="col">Name</th>
           <th scope="col">Joining Date</th>
           <th scope="col">Username</th>
-          <th scope="col">Eamil</th>
+          <th scope="col">Email</th>
           <th scope="col">Password</th>
         </tr>
       </thead>
@@ -32,7 +41,7 @@
     </table>
     <div class="d-flex justify-content-center">
       
-      <ngb-pagination [collectionSize]="70" [(page)]="page" (pageChange)="getTableContents($event)" [directionLinks]="false"></ngb-pagination>
+      <ngb-pagination [collectionSize]="pageSize" [(page)]="page" (pageChange)="getTableContents()" [directionLinks]="true  "></ngb-pagination>
     </div>
 
   </div>

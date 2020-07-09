@@ -11,19 +11,38 @@ export class AppComponent {
   title = 'PagedTable';
   item: Array<any>= [];
   page: number= 1;
+  limit: number= 10;
+  pageSize: number =70;
   constructor(private http:HttpService) {
-    this.getTableContents(this.page);
+    this.getTableContents();
   }
   
-  getTableContents(pageNo: number){
-    this.http.getObjects(pageNo).subscribe(
+  getTableContents(){
+    console.log(this.page, this.limit)
+    this.http.getObjects(this.page, this.limit).subscribe(
       data=>{
-        // console.log(data, this.page)
         this.item= data
       },
       err=> console.log(err),
       ()=> console.log("finne")
     )
   }
+  getLimitSymbol(current: number) {
+    return [5, 10][current - 1];
+  }
 
+  valueChange(num: number){
+    if(this.limit != num){
+      if(num == 5){
+        this.pageSize*= 2;
+        this.page= this.page*2-1;
+      }
+      else{
+        this.pageSize/= 2;
+        this.page= Math.ceil(this.page/2);
+      }
+    }
+    this.limit= num;
+    this.getTableContents();
+  }
 }
