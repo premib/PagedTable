@@ -24,7 +24,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              {
+                "input": "./node_modules/bootstrap/dist/css/bootstrap.css"
+              }
             ],
             "scripts": []
           },
@@ -119,6 +122,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "PagedTable"
+    }
+  },
+  "defaultProject": "PagedTable",
+  "cli": {
+    "analytics": "7839c939-32d4-4295-a478-1db4bf0ba24a"
+  }
 }
